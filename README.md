@@ -10,4 +10,5 @@ VS Code plugin for all Lite8 cartridge format
 
 
 ## Credit
-* initially inspired by Liko12-Vscode https://github.com/LIKO-12/LIKO-VSCode
+* initially inspired by `Liko12-Vscode` project https://github.com/LIKO-12/LIKO-VSCode
+* borrow an working project skeleton by https://github.com/svaberg/SWMF-grammar

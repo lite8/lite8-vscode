@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "publisher": "x2nie",
     "engines": {
-        "vscode": "^1.39.0"
+        "vscode": "^1.41.0"
     },
     "categories": [
         "Programming Languages"
@@ -42,7 +42,15 @@
             {
                 "language": "lite8",
                 "scopeName": "source.lite8",
-                "path": "./syntaxes/lite8.tmLanguage.json"
+                "path": "./syntaxes/lite8.tmLanguage.json",
+                "comment":{
+
+                    "embeddedLanguages": {
+                        "meta.embedded.block.javascript": "javascript",
+                        "meta.embedded.block.lua": "lua",
+                        "meta.embedded.block.pascal": "pascal"
+                    }
+                }
             }
         ]
     },

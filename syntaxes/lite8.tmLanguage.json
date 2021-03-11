@@ -1,10 +1,10 @@
 {
-	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"scopeName": "source.lite8",
 	"name": "Lite8",
 	"patterns": [
-		{
-			"include": "#scriptcode"
-		},
+		{ "include": "#embedded_pascal" },
+		{ "include": "#embedded_lua" },
+		{ "include": "#scriptcode" },
 		{
 			"include": "#binhex"
 		},
@@ -27,6 +27,49 @@
 	"repository": {
 		"scriptcode": {
 			"name": "meta.section.lite8.scriptcode",
+			"begin": "^__script__",
+			"end": "(?=^__\\w+__)",
+			"patterns": [
+				{ "include": "#embedded_pascal" },
+				{ "include": "#embedded_lua" },
+				{ "include": "#embedded_javascript" }
+			]
+		},
+		"embedded_pascal": {
+			"name": "meta.embedded.block.pascal",
+			"begin": "^\\.pas(cal)*|^__script__\\s*\\^.pas(cal)*",
+			"end": "(?=^__\\w+__)",
+			"patterns": [
+				{
+					"include": "source.pascal"
+				}
+			]
+			
+		},
+		"embedded_lua": {
+			"name": "meta.embedded.block.lua",
+			"begin": "^\\.lua|^__script__\\s*\\.lua",
+			"end": "(?=^__\\w+__)",
+			"patterns": [
+				{
+					"include": "source.lua"
+				}
+			]
+			
+		},
+		"embedded_javascript": {
+			"name": "meta.embedded.block.javascript",
+			"begin": "^\\.js|^\\.javascript",
+			"end": "(?=^__\\w+__)",
+			"patterns": [
+				{
+					"include": "source.js"
+				}
+			]
+			
+		},
+		"scriptcode000": {
+			"name": "meta.section.lite8.scriptcode",
 			"begin": "__script__",
 			"end": "(?=^__\\w+__)",
 			"patterns": [
@@ -39,7 +82,7 @@
 			]
 		},
 		"luacode": {
-			"name": "meta.section.lk12.luacode",
+			"name": "meta.section.lite8.luacode",
 			"begin": "___luacode___",
 			"end": "___",
 			"patterns": [
@@ -62,7 +105,7 @@
 			]
 		},
 		"spritesheet": {
-			"name": "meta.section.lk12.spritesheet",
+			"name": "meta.section.lite8.spritesheet",
 			"begin": "spritesheet___",
 			"end": "___",
 			"patterns": [
@@ -78,7 +121,7 @@
 			]
 		},
 		"sfx": {
-			"name": "meta.section.lk12.sfx",
+			"name": "meta.section.lite8.sfx",
 			"match": "sfx___",
 			"patterns": [
 				{
@@ -87,19 +130,19 @@
 			]
 		},
 		"header": {
-			"name": "entity.name.section.lk12",
+			"name": "entity.name.section.lite8",
 			"match": "LK12;([A-Z]+);([0-9]+)x([0-9]+)",
 			"captures": {
 				"2": {
-					"name": "constant.numbers.integer.lk12"
+					"name": "constant.numbers.integer.lite8"
 				},
 				"3": {
-					"name": "constant.numbers.lk12"
+					"name": "constant.numbers.lite8"
 				}
 			}
 		},
 		"element": {
-			"name": "constant.numbers.integer.lk12",
+			"name": "constant.numbers.integer.lite8",
 			"match": "[0-9]+"
 		},
 		"hexadecimal": {
@@ -107,13 +150,12 @@
 			"match": "[0-9A-Fa-f\\|]"
 		},
 		"note": {
-			"name": "constant.other.sfx.lk12",
+			"name": "constant.other.sfx.lite8",
 			"match": "[A-G] [0-9]+"
 		},
 		"section": {
-			"name": "entity.name.section.lk12",
+			"name": "entity.name.section.lite8",
 			"match": "[a-z]+___"
 		}
-	},
-	"scopeName": "source.lite8"
+	}
 }

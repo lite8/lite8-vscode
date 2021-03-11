@@ -1,65 +1,52 @@
 lite8 https://github.com/lite8
 ver. 0.1
 
-__script__
+__script__.lua
+-- its a LUA comment
+--PIANO
 
-.pasca
- .pas
-program Foo;
+-- C# D#   F# G# A#
+--C  D  E F  G  A  B
 
-var
-  x,y: integer;
-procedure _init();
-begin
-  x:=64;
-  y:=64;
-end; 
+--Keyboard Layout
 
-procedure _update();
-begin
-    if btn(0) then X := X - 1;
-    if btn(1) then X := X + 1;
+-- s  d    g  h  j
+--z  x  c v  b  n  m
 
-    if btn(2) then Y := Y - 1;
-    if btn(3) then Y := Y + 1;
-	
-	
-    { if btn(10) then dec(Y,5);	//pgup }
-    { if btn(11) then inc(Y,5); }
-	
-    if btn(12) then dec(Y);	
-    if btn(13) then inc(Y);
-end;  
-  
-procedure _draw();
-begin
-  cls(1);
-  color(7);
-  //al_put_pixel (x, y, Red);
-  //pset(x,y,9); 
-  //   print('halo');
-  { print('world',30,8); }
-  //-1
-  //   print     (  ' hey',8,8);
-  //0
-  //   print(
-	// 'yolayhey',16,16); print('fooh!');
-  //a
-  print('yeah!',30,64, 11);
-  //b
-  print('halo');
-  //c
-  spr(0, x,y);
-  // pset(x+0,y,8); 
-  // pset(x+1,y,8); 
-  // pset(x+2,y,8); 
-  // pset(x+3,y,8); 
-  // pset(x+4,y,8); 
-  // pset(x+5,y,8); 
-end; 
+Controls("Keyboard")
 
-begin
-end.
+local notes = {
+ "C","C#","D","D#","E","F","F#",
+ "G","G#","A","A#","B"
+}
+
+local waves = 5
+local wname = {
+ "Sin", "Square", "Pulse","Sawtooth",
+ "Triangle", "Noise"
+}  
+
+--Notes go from 1 to 12
+--Oct goes from 0 to 8
+local function calcHz(note,oct)
+ local c = 2^(1/12)
+ 
+ local notepos = (oct)*12+note
+ local notedist = notepos - 58
+ local notehz = 440 --A4
+ 
+ if notedist < 0 then
+  for i=1,-notedist do
+   notehz = notehz/c
+  end
+ elseif notedist > 0 then
+  for i=1,notedist do
+   notehz = notehz*c
+  end
+ end
+ 
+ return math.floor(notehz)
+end
 
 __palette__
 0|ff8800
