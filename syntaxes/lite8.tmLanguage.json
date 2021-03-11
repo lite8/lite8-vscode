@@ -2,7 +2,6 @@
 	"scopeName": "source.lite8",
 	"name": "Lite8",
 	"patterns": [
-		{ "include": "#embedded_pascal" },
 		{ "include": "#embedded_lua" },
 		{ "include": "#scriptcode" },
 		{
@@ -26,7 +25,7 @@
 	],
 	"repository": {
 		"scriptcode": {
-			"name": "meta.section.lite8.scriptcode",
+			"name": "entity.name.tag.scriptcode",
 			"begin": "^__script__",
 			"end": "(?=^__\\w+__)",
 			"patterns": [
@@ -37,11 +36,14 @@
 		},
 		"embedded_pascal": {
 			"name": "meta.embedded.block.pascal",
-			"begin": "^\\.pas(cal)*|^__script__\\s*\\^.pas(cal)*",
+			"begin": "^\\.pas(cal)*$|^__script__\\s*^.pas(cal)*$",
 			"end": "(?=^__\\w+__)",
 			"patterns": [
 				{
 					"include": "source.pascal"
+				},
+				{
+					"include": "source.objectpascal"
 				}
 			]
 			

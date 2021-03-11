@@ -2,8 +2,7 @@ lite8 https://github.com/lite8
 ver. 0.1
 
 __script__
-
-.pasca
+.pas
  .pas
 program Foo;
 
@@ -64,6 +63,7 @@ end.
 __palette__
 0|ff8800
 a|aabbcc
+f|0088ff
 f|0088ff
 
 __sprite__
